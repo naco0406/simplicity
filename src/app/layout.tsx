@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Metadata } from 'next';
+import { PageTransitionProvider } from '@/hooks/usePageTransition';
 import './globals.css';
 
 interface Props {
@@ -22,8 +23,10 @@ const RootLayout: FC<Props> = ({ children }) => {
           rel="stylesheet"
         />
       </head>
-      <body className="font-inter antialiased bg-gray-900 text-white">
-        {children}
+      <body className="font-inter antialiased bg-black text-white">
+        <PageTransitionProvider>
+          {children}
+        </PageTransitionProvider>
       </body>
     </html>
   );

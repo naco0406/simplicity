@@ -10,9 +10,9 @@ export const ConferenceSection: FC<Props> = memo(({
 }) => {
 
     return (
-        <section className="relative w-full h-full items-center">
+        <section className="relative w-full h-full">
             <div
-                className="transition-all duration-1000 opacity-100 translate-y-0 h-full items-center py-24"
+                className="transition-all duration-1000 opacity-100 translate-y-0 h-full"
                 style={{ transitionDelay: '0.3s' }}
             >
                 <ConferenceGrid conferences={conferences} />

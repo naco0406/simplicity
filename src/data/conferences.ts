@@ -4,8 +4,8 @@ import { Conference } from '@/types/conference';
 export const SIMPLICITY: Conference[] = [
     {
         id: '1',
-        title: '토스 그래픽을 3초 만에 그리는 AI',
-        subtitle: '디자인 생산성을 혁신하는 AI 도구',
+        title: `AI시대에\n라이터로 살아남기`,
+        subtitle: 'The End of UX Writers',
         speaker: '고현성',
         role: 'Graphic Design Team Leader',
         description: 'TOSS만의 스케치부터 인간이 3일 걸려 만든 3D 그래픽을 3초 만에 만들어내는 혁신적인 AI 워크플로우를 소개합니다.',

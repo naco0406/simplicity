@@ -9,7 +9,7 @@ export const SIMPLICITY: Conference[] = [
         speaker: '고현성',
         role: 'Graphic Design Team Leader',
         description: 'TOSS만의 스케치부터 인간이 3일 걸려 만든 3D 그래픽을 3초 만에 만들어내는 혁신적인 AI 워크플로우를 소개합니다.',
-        image: '/api/placeholder/360/240',
+        image: '/images/1.png',
     },
     {
         id: '2',
@@ -18,7 +18,7 @@ export const SIMPLICITY: Conference[] = [
         speaker: '김민지',
         role: 'Graphic Designer',
         description: '토스만의 독특한 그래픽 스타일을 만들어가는 과정과 브랜드 일관성을 유지하는 방법을 공유합니다.',
-        image: '/api/placeholder/360/240',
+        image: '/images/1.png',
     },
     {
         id: '3',
@@ -27,7 +27,7 @@ export const SIMPLICITY: Conference[] = [
         speaker: '박민수',
         role: 'Interaction Team Leader',
         description: '복잡한 약관과 동의 과정을 사용자가 쉽게 이해할 수 있도록 개선한 UX 디자인 사례를 소개합니다.',
-        image: '/api/placeholder/360/240',
+        image: '/images/1.png',
     },
     {
         id: '4',
@@ -36,7 +36,7 @@ export const SIMPLICITY: Conference[] = [
         speaker: '조유성',
         role: 'UX Engineering Team Leader',
         description: '토스 내부에서 사용하는 디자인 툴 개발 경험과 협업 효율성을 높이는 방법을 공유합니다.',
-        image: '/api/placeholder/360/240',
+        image: '/images/1.png',
     },
     {
         id: '5',
@@ -45,7 +45,7 @@ export const SIMPLICITY: Conference[] = [
         speaker: '오성식',
         role: 'UX Writing Team Leader',
         description: 'AI가 발달하는 시대에 라이터가 가져야 할 역량과 차별화된 가치를 만드는 방법을 탐구합니다.',
-        image: '/api/placeholder/360/240',
+        image: '/images/1.png',
     },
     {
         id: '6',
@@ -54,6 +54,6 @@ export const SIMPLICITY: Conference[] = [
         speaker: '이지은',
         role: 'UX Designer',
         description: '복잡한 금융 서비스를 누구나 쉽게 사용할 수 있도록 만드는 UX 디자인 원칙과 실무 경험을 공유합니다.',
-        image: '/api/placeholder/360/240',
+        image: '/images/1.png',
     },
 ];

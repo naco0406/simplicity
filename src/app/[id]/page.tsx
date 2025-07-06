@@ -1,12 +1,12 @@
 'use client';
 
+import { GoBackButton } from '@/components/conference/GoBackButton';
 import { SIMPLICITY } from '@/data/conferences';
 import { usePageTransition } from '@/hooks/usePageTransition';
 import { Conference } from '@/types/conference';
+import { ArrowRight, Clock, MapPin, Users } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { FC, useEffect, useState, use } from 'react';
-import { ArrowLeft, ArrowRight, Clock, MapPin, Users } from 'lucide-react';
-import { GoBackButton } from '@/components/conference/GoBackButton';
+import { FC, use, useEffect, useState } from 'react';
 
 interface Props {
     params: Promise<{

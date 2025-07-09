@@ -1,13 +1,13 @@
 'use client';
 
 import { usePageTransition } from '@/hooks/usePageTransition';
-import { Conference } from '@/types/conference';
+import { ConferenceData } from '@/types/conference';
 import { CARD_CONSTANTS } from '@/utils/constants';
 import { useRouter } from 'next/navigation';
 import { FC, memo, useRef, useEffect } from 'react';
 
 interface Props {
-    conference: Conference;
+    conference: ConferenceData;
     index: number;
     isVisible: boolean;
     isFocused?: boolean;

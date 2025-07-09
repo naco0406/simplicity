@@ -6,7 +6,7 @@ import { Error } from '@/components/conference/screen/ErrorScreen';
 import { SIMPLICITY } from '@/data/conferences';
 import { ConferenceProvider } from '@/hooks/useConference';
 import { usePageTransition } from '@/hooks/usePageTransition';
-import { Conference } from '@/types/conference';
+import { ConferenceData } from '@/types/conference';
 import { useRouter } from 'next/navigation';
 import { FC, ReactNode, use, useEffect, useState } from 'react';
 import { BackgroundImage } from '@/components/conference/BackgroundImage';
@@ -21,7 +21,7 @@ interface Props {
 const ConferenceLayout: FC<Props> = ({ children, params }) => {
     const router = useRouter();
     const { startReturnTransition, endTransition } = usePageTransition();
-    const [conference, setConference] = useState<Conference | null>(null);
+    const [conference, setConference] = useState<ConferenceData | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [notFound, setNotFound] = useState(false);
     const [fadeIn, setFadeIn] = useState(false);

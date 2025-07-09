@@ -1,8 +1,8 @@
-import { Conference } from "@/types/conference";
+import { ConferenceData } from "@/types/conference";
 import { FC, Fragment } from "react";
 
 interface Props {
-    conference: Conference
+    conference: ConferenceData
 }
 export const Intro: FC<Props> = ({ conference }) => {
     const { title, subtitle, speaker, role } = conference

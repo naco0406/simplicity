@@ -1,10 +1,10 @@
 'use client';
 
 import { createContext, useContext, useState, useCallback, ReactNode, useRef } from 'react';
-import { Conference } from '@/types/conference';
+import { ConferenceData } from '@/types/conference';
 
 interface CardTransitionData {
-    conference: Conference;
+    conference: ConferenceData;
     index: number;
     cardElement: HTMLElement;
 }
@@ -13,8 +13,8 @@ interface PageTransitionContextType {
     isTransitioning: boolean;
     transitionData: CardTransitionData | null;
     startTransition: (data: CardTransitionData) => Promise<void>;
-    startReturnTransition: (conference: Conference) => Promise<void>;
-    executeReturnAnimation: (conference: Conference, targetCardElement?: HTMLElement | null) => Promise<void>;
+    startReturnTransition: (conference: ConferenceData) => Promise<void>;
+    executeReturnAnimation: (conference: ConferenceData, targetCardElement?: HTMLElement | null) => Promise<void>;
     endTransition: () => void;
     isReturning: boolean;
     setIsReturning: (returning: boolean) => void;
@@ -91,7 +91,7 @@ export const PageTransitionProvider = ({ children }: { children: ReactNode }) =>
         return Promise.resolve();
     }, []);
 
-    const startReturnTransition = useCallback(async (conference: Conference) => {
+    const startReturnTransition = useCallback(async (conference: ConferenceData) => {
         setIsReturning(true);
         setIsTransitioning(true);
 
@@ -118,7 +118,7 @@ export const PageTransitionProvider = ({ children }: { children: ReactNode }) =>
     }, []);
 
     // 홈페이지에서 호출될 복귀 애니메이션 실행 함수
-    const executeReturnAnimation = useCallback(async (conference: Conference, targetCardElement?: HTMLElement | null) => {
+    const executeReturnAnimation = useCallback(async (conference: ConferenceData, targetCardElement?: HTMLElement | null) => {
         // 검은 화면 오버레이 생성
         let overlay = overlayRef.current;
         if (!overlay) {

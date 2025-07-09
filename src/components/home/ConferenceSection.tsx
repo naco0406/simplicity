@@ -1,9 +1,9 @@
 import { ConferenceGrid } from '@/components/home/ConferenceGrid';
-import { Conference } from '@/types/conference';
+import { ConferenceData } from '@/types/conference';
 import { FC, memo } from 'react';
 
 interface Props {
-    conferences: Conference[];
+    conferences: ConferenceData[];
 }
 export const ConferenceSection: FC<Props> = memo(({
     conferences,

@@ -1,17 +1,17 @@
 'use client';
 
-import { Conference } from '@/types/conference';
+import { ConferenceData } from '@/types/conference';
 import { createContext, useContext, ReactNode } from 'react';
 
 interface ConferenceContextType {
-    conference: Conference;
+    conference: ConferenceData;
 }
 
 const ConferenceContext = createContext<ConferenceContextType | null>(null);
 
 interface Props {
     children: ReactNode;
-    conference: Conference;
+    conference: ConferenceData;
 }
 
 export const ConferenceProvider = ({ children, conference }: Props) => {

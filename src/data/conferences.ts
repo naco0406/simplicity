@@ -1,7 +1,7 @@
-import { Conference } from '@/types/conference';
+import { ConferenceData } from '@/types/conference';
 
 /** Toss Simplicity based sample data */
-export const SIMPLICITY: Conference[] = [
+export const SIMPLICITY: ConferenceData[] = [
     {
         id: '1',
         title: `AI시대에\n라이터로 살아남기`,

@@ -1,12 +1,12 @@
 import { useScrollNavigation } from '@/hooks/useScrollNavigation';
 import { useVerticalToHorizontalScroll } from '@/hooks/useVerticalToHorizontalScroll';
-import { Conference } from '@/types/conference';
+import { ConferenceData } from '@/types/conference';
 import { CARD_CONSTANTS, SCROLL_CONSTANTS } from '@/utils/constants';
 import { FC, memo, useRef, useEffect } from 'react';
 import { ConferenceCard } from './ConferenceCard';
 
 interface Props {
-    conferences: Conference[];
+    conferences: ConferenceData[];
 }
 
 export const ConferenceGrid: FC<Props> = memo(({ conferences }) => {

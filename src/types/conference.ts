@@ -1,4 +1,4 @@
-export interface Conference {
+export interface ConferenceData {
     id: string;
     title: string;
     subtitle: string;

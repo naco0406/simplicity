@@ -23,6 +23,4 @@ export const SCROLL_CONSTANTS = {
   THROTTLE_DELAY: 16,
 } as const;
 
-export const INTRO_TIME = 5000;
-
 export const MAX_RETRIES = 3;

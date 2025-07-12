@@ -1,0 +1,103 @@
+{
+  "id": "7",
+  "totalDuration": 32000,
+  "srcUrl": "/audios/sample-audio-2.mp3",
+  "sections": [
+    {
+      "id": "intro-section",
+      "title": "응원가 시작",
+      "type": "intro",
+      "duration": 4500,
+      "startTime": 0,
+      "endTime": 4500,
+      "mainTitle": "롯데 자이언츠 • 전민재 응원가",
+      "subtitle": "사직야구장에서 울려퍼지는 함성",
+      "speaker": "롯데 팬들",
+      "role": "응원단"
+    },
+    {
+      "id": "content-section-1",
+      "title": "첫 번째 후렴",
+      "type": "content",
+      "duration": 13500,
+      "startTime": 4500,
+      "endTime": 18000,
+      "audioSegmentIndex": 0,
+      "sentences": [
+        {
+          "id": "sentence-1",
+          "text": "롯데의 전민재~",
+          "startTime": 0,
+          "endTime": 3000
+        },
+        {
+          "id": "sentence-2",
+          "text": "롯데의 전민재 안타~",
+          "startTime": 3000,
+          "endTime": 6000
+        },
+        {
+          "id": "sentence-3",
+          "text": "오오오오 오 오오 오\n롯데 전민재~",
+          "startTime": 6000,
+          "endTime": 12000
+        },
+        {
+          "id": "sentence-4",
+          "text": "(전민재!)",
+          "startTime": 12000,
+          "endTime": 13500
+        }
+      ]
+    },
+    {
+      "id": "content-section-2",
+      "title": "두 번째 후렴",
+      "type": "content",
+      "duration": 13500,
+      "startTime": 18000,
+      "endTime": 31500,
+      "audioSegmentIndex": 1,
+      "sentences": [
+        {
+          "id": "sentence-6",
+          "text": "전민재~",
+          "startTime": 0,
+          "endTime": 3000
+        },
+        {
+          "id": "sentence-7",
+          "text": "롯데의 전민재 안타~",
+          "startTime": 3000,
+          "endTime": 6000
+        },
+        {
+          "id": "sentence-8",
+          "text": "오오오오 오 오오 오\n롯데 전민재~",
+          "startTime": 6000,
+          "endTime": 12000
+        },
+        {
+          "id": "sentence-9",
+          "text": "(전민재!)",
+          "startTime": 12000,
+          "endTime": 13500
+        }
+      ]
+    },
+    {
+      "id": "closing-section",
+      "title": "응원 마무리",
+      "type": "closing",
+      "duration": 3500,
+      "startTime": 31500,
+      "endTime": 35000,
+      "message": "전민재 파이팅!",
+      "credits": [
+        "응원: 롯데 자이언츠 팬클럽",
+        "선수: 전민재 (롯데 자이언츠)",
+        "사직야구장에서 함께하는 모든 팬들에게 감사드립니다"
+      ]
+    }
+  ]
+}

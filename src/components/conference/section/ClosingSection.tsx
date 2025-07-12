@@ -37,23 +37,6 @@ export const ClosingSection: FC<Props> = ({
                             {section.message}
                         </span>
                     </motion.h1>
-
-                    {/* Progress indication */}
-                    {playerState.isPlaying && (
-                        <motion.div
-                            className="w-32 h-1 bg-gray-700 rounded-full mx-auto mb-8 overflow-hidden"
-                            initial={{ opacity: 0, scaleX: 0 }}
-                            animate={{ opacity: 1, scaleX: 1 }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
-                        >
-                            <motion.div
-                                className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"
-                                initial={{ width: 0 }}
-                                animate={{ width: `${progress}%` }}
-                                transition={{ duration: 0.3, ease: "easeOut" }}
-                            />
-                        </motion.div>
-                    )}
                 </motion.div>
 
                 {/* Credits */}

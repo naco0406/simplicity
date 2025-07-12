@@ -56,4 +56,13 @@ export const sampleConferenceData: ConferenceData[] = [
         description: '복잡한 금융 서비스를 누구나 쉽게 사용할 수 있도록 만드는 UX 디자인 원칙과 실무 경험을 공유합니다.',
         image: '/images/1.png',
     },
+    {
+        id: '7',
+        title: '전민재',
+        subtitle: '롯데 자이언츠 응원가',
+        speaker: '전민재',
+        role: '내야수',
+        description: '롯데 자이언츠 No.13 전민재 응원가',
+        image: '/images/1.png',
+    },
 ];

@@ -1,0 +1,121 @@
+{
+  "id": "3",
+  "totalDuration": 78000,
+  "srcUrl": "/audios/sample-audio.mp3",
+  "sections": [
+    {
+      "id": "intro-section",
+      "title": "웰컴",
+      "type": "intro",
+      "duration": 5000,
+      "startTime": 0,
+      "endTime": 5000,
+      "mainTitle": "박민수 • 동의 화면도 간결하게 할 수 있을까",
+      "subtitle": "UX 라이팅으로 복잡한 정보를 간단하게",
+      "speaker": "박민수",
+      "role": "Interaction Team Leader"
+    },
+    {
+      "id": "content-section-1",
+      "title": "복잡한 정보의 간소화",
+      "type": "content",
+      "duration": 35000,
+      "startTime": 5000,
+      "endTime": 40000,
+      "audioSegmentIndex": 0,
+      "sentences": [
+        {
+          "id": "sentence-1",
+          "text": "안녕하세요, 토스에서 인터랙션 팀 리더로 일하고 있는 박민수입니다.",
+          "startTime": 0,
+          "endTime": 4500
+        },
+        {
+          "id": "sentence-2",
+          "text": "오늘은 복잡한 약관과 동의 과정을 사용자가 쉽게 이해할 수 있도록 개선한 사례를 소개하겠습니다.",
+          "startTime": 4500,
+          "endTime": 12000
+        },
+        {
+          "id": "sentence-3",
+          "text": "동의 화면은 사용자가 가장 싫어하는 화면 중 하나입니다.",
+          "startTime": 12000,
+          "endTime": 16500
+        },
+        {
+          "id": "sentence-4",
+          "text": "복잡한 법적 용어와 긴 텍스트는 사용자를 혼란스럽게 만듭니다.",
+          "startTime": 16500,
+          "endTime": 24000
+        },
+        {
+          "id": "sentence-5",
+          "text": "우리는 UX 라이팅을 통해 이를 개선했습니다.",
+          "startTime": 24000,
+          "endTime": 31500
+        },
+        {
+          "id": "sentence-6",
+          "text": "사용자가 이해하기 쉬운 언어로 바꾸고, 시각적 계층구조를 만들었습니다.",
+          "startTime": 31500,
+          "endTime": 35000
+        }
+      ]
+    },
+    {
+      "id": "content-section-2",
+      "title": "개선 결과",
+      "type": "content",
+      "duration": 33000,
+      "startTime": 40000,
+      "endTime": 73000,
+      "audioSegmentIndex": 1,
+      "sentences": [
+        {
+          "id": "sentence-7",
+          "text": "개선 결과, 동의 완료율이 크게 향상되었습니다.",
+          "startTime": 0,
+          "endTime": 4500
+        },
+        {
+          "id": "sentence-8",
+          "text": "사용자 불만도 줄어들었고, 고객센터 문의도 감소했습니다.",
+          "startTime": 4500,
+          "endTime": 11500
+        },
+        {
+          "id": "sentence-9",
+          "text": "핵심은 사용자 관점에서 생각하는 것입니다.",
+          "startTime": 11500,
+          "endTime": 18000
+        },
+        {
+          "id": "sentence-10",
+          "text": "법적 요구사항을 만족하면서도 사용자 친화적으로 만들 수 있습니다.",
+          "startTime": 18000,
+          "endTime": 25500
+        },
+        {
+          "id": "sentence-11",
+          "text": "앞으로도 지속적으로 개선해 나갈 예정입니다.",
+          "startTime": 25500,
+          "endTime": 33000
+        }
+      ]
+    },
+    {
+      "id": "closing-section",
+      "title": "마무리",
+      "type": "closing",
+      "duration": 5000,
+      "startTime": 73000,
+      "endTime": 78000,
+      "message": "감사합니다",
+      "credits": [
+        "발표자: 박민수 (Interaction Team Leader)",
+        "UX 라이팅으로 복잡한 정보를 간단하게",
+        "토스팀 전체의 지원에 감사드립니다"
+      ]
+    }
+  ]
+} 

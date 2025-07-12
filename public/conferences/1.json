@@ -1,0 +1,127 @@
+{
+  "id": "1",
+  "totalDuration": 92000,
+  "srcUrl": "/audios/sample-audio.mp3",
+  "sections": [
+    {
+      "id": "intro-section",
+      "title": "웰컴",
+      "type": "intro",
+      "duration": 5000,
+      "startTime": 0,
+      "endTime": 5000,
+      "mainTitle": "고현성 • AI시대에 라이터로 살아남기",
+      "subtitle": "The End of UX Writers",
+      "speaker": "고현성",
+      "role": "Graphic Design Team Leader"
+    },
+    {
+      "id": "content-section-1",
+      "title": "AI 시대의 도전",
+      "type": "content",
+      "duration": 45000,
+      "startTime": 5000,
+      "endTime": 50000,
+      "audioSegmentIndex": 0,
+      "sentences": [
+        {
+          "id": "sentence-1",
+          "text": "안녕하세요, 토스에서 그래픽 디자인 팀 리더로 일하고 있는 고현성입니다.",
+          "startTime": 0,
+          "endTime": 4500
+        },
+        {
+          "id": "sentence-2",
+          "text": "오늘은 AI 시대에 라이터가 어떻게 살아남을 수 있는지에 대해 이야기하려고 합니다.",
+          "startTime": 4500,
+          "endTime": 12000
+        },
+        {
+          "id": "sentence-3",
+          "text": "AI가 발달하면서 콘텐츠 제작 방식이 크게 변화하고 있습니다.",
+          "startTime": 12000,
+          "endTime": 16500
+        },
+        {
+          "id": "sentence-4",
+          "text": "하지만 인간만이 가질 수 있는 창의성과 감성은 여전히 중요합니다.",
+          "startTime": 16500,
+          "endTime": 24000
+        },
+        {
+          "id": "sentence-5",
+          "text": "우리는 AI와 협업하면서 더 나은 콘텐츠를 만들어갈 수 있습니다.",
+          "startTime": 24000,
+          "endTime": 31500
+        },
+        {
+          "id": "sentence-6",
+          "text": "AI는 도구일 뿐, 진짜 스토리는 인간이 만들어야 합니다.",
+          "startTime": 31500,
+          "endTime": 38000
+        },
+        {
+          "id": "sentence-7",
+          "text": "앞으로의 라이터는 AI를 활용하는 능력이 중요해질 것입니다.",
+          "startTime": 38000,
+          "endTime": 45000
+        }
+      ]
+    },
+    {
+      "id": "content-section-2",
+      "title": "미래 전략",
+      "type": "content",
+      "duration": 32000,
+      "startTime": 50000,
+      "endTime": 82000,
+      "audioSegmentIndex": 1,
+      "sentences": [
+        {
+          "id": "sentence-8",
+          "text": "라이터가 가져야 할 새로운 역량에 대해 이야기해보겠습니다.",
+          "startTime": 0,
+          "endTime": 4500
+        },
+        {
+          "id": "sentence-9",
+          "text": "AI 프롬프트 작성 능력과 편집 능력이 핵심이 될 것입니다.",
+          "startTime": 4500,
+          "endTime": 11500
+        },
+        {
+          "id": "sentence-10",
+          "text": "또한 브랜드 톤앤매너를 유지하는 능력도 중요합니다.",
+          "startTime": 11500,
+          "endTime": 18000
+        },
+        {
+          "id": "sentence-11",
+          "text": "사용자 중심의 사고와 감정적 공감 능력은 변하지 않습니다.",
+          "startTime": 18000,
+          "endTime": 25500
+        },
+        {
+          "id": "sentence-12",
+          "text": "AI와 인간의 협업이 최고의 결과를 만들어낼 것입니다.",
+          "startTime": 25500,
+          "endTime": 32000
+        }
+      ]
+    },
+    {
+      "id": "closing-section",
+      "title": "마무리",
+      "type": "closing",
+      "duration": 10000,
+      "startTime": 82000,
+      "endTime": 92000,
+      "message": "감사합니다",
+      "credits": [
+        "발표자: 고현성 (Graphic Design Team Leader)",
+        "The End of UX Writers",
+        "토스팀 전체의 지원에 감사드립니다"
+      ]
+    }
+  ]
+} 

@@ -1,0 +1,133 @@
+{
+  "id": "4",
+  "totalDuration": 90000,
+  "srcUrl": "/audios/sample-audio.mp3",
+  "sections": [
+    {
+      "id": "intro-section",
+      "title": "웰컴",
+      "type": "intro",
+      "duration": 5000,
+      "startTime": 0,
+      "endTime": 5000,
+      "mainTitle": "조유성 • 토스가 디자인 툴을 만든 이유",
+      "subtitle": "개발자와 디자이너의 협업을 위한 도구",
+      "speaker": "조유성",
+      "role": "UX Engineering Team Leader"
+    },
+    {
+      "id": "content-section-1",
+      "title": "협업의 어려움",
+      "type": "content",
+      "duration": 45000,
+      "startTime": 5000,
+      "endTime": 50000,
+      "audioSegmentIndex": 0,
+      "sentences": [
+        {
+          "id": "sentence-1",
+          "text": "안녕하세요, 토스에서 UX 엔지니어링 팀 리더로 일하고 있는 조유성입니다.",
+          "startTime": 0,
+          "endTime": 4500
+        },
+        {
+          "id": "sentence-2",
+          "text": "오늘은 토스 내부에서 사용하는 디자인 툴 개발 경험에 대해 이야기하려고 합니다.",
+          "startTime": 4500,
+          "endTime": 12000
+        },
+        {
+          "id": "sentence-3",
+          "text": "개발자와 디자이너 간의 협업은 항상 어려운 과제였습니다.",
+          "startTime": 12000,
+          "endTime": 16500
+        },
+        {
+          "id": "sentence-4",
+          "text": "서로 다른 언어와 도구를 사용하면서 소통의 어려움이 있었습니다.",
+          "startTime": 16500,
+          "endTime": 24000
+        },
+        {
+          "id": "sentence-5",
+          "text": "우리는 이 문제를 해결하기 위해 내부 디자인 툴을 개발했습니다.",
+          "startTime": 24000,
+          "endTime": 31500
+        },
+        {
+          "id": "sentence-6",
+          "text": "이 툴은 디자이너와 개발자가 공통으로 사용할 수 있는 플랫폼입니다.",
+          "startTime": 31500,
+          "endTime": 38000
+        },
+        {
+          "id": "sentence-7",
+          "text": "결과적으로 협업 효율성이 크게 향상되었습니다.",
+          "startTime": 38000,
+          "endTime": 45000
+        }
+      ]
+    },
+    {
+      "id": "content-section-2",
+      "title": "개발 과정과 결과",
+      "type": "content",
+      "duration": 35000,
+      "startTime": 50000,
+      "endTime": 85000,
+      "audioSegmentIndex": 1,
+      "sentences": [
+        {
+          "id": "sentence-8",
+          "text": "개발 과정에서 가장 중요한 것은 사용자 피드백이었습니다.",
+          "startTime": 0,
+          "endTime": 4500
+        },
+        {
+          "id": "sentence-9",
+          "text": "실제 디자이너와 개발자들이 사용하면서 개선점을 찾아냈습니다.",
+          "startTime": 4500,
+          "endTime": 11500
+        },
+        {
+          "id": "sentence-10",
+          "text": "반복적인 테스트와 개선을 통해 완성도 높은 툴을 만들 수 있었습니다.",
+          "startTime": 11500,
+          "endTime": 18000
+        },
+        {
+          "id": "sentence-11",
+          "text": "이제 디자인에서 개발까지의 워크플로우가 훨씬 효율적이 되었습니다.",
+          "startTime": 18000,
+          "endTime": 25500
+        },
+        {
+          "id": "sentence-12",
+          "text": "앞으로도 지속적으로 개선해 나갈 예정입니다.",
+          "startTime": 25500,
+          "endTime": 32000
+        },
+        {
+          "id": "sentence-13",
+          "text": "더 나은 협업 환경을 만들어 나가겠습니다.",
+          "startTime": 32000,
+          "endTime": 35000
+        }
+      ]
+    },
+    {
+      "id": "closing-section",
+      "title": "마무리",
+      "type": "closing",
+      "duration": 5000,
+      "startTime": 85000,
+      "endTime": 90000,
+      "message": "감사합니다",
+      "credits": [
+        "발표자: 조유성 (UX Engineering Team Leader)",
+        "개발자와 디자이너의 협업을 위한 도구",
+        "토스팀 전체의 지원에 감사드립니다"
+      ]
+    }
+  ]
+} 

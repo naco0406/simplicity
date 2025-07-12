@@ -1,0 +1,133 @@
+{
+  "id": "6",
+  "totalDuration": 95000,
+  "srcUrl": "/audios/sample-audio.mp3",
+  "sections": [
+    {
+      "id": "intro-section",
+      "title": "웰컴",
+      "type": "intro",
+      "duration": 5000,
+      "startTime": 0,
+      "endTime": 5000,
+      "mainTitle": "이지은 • 사용자 중심의 인터페이스 디자인",
+      "subtitle": "복잡한 금융 서비스를 간단하게",
+      "speaker": "이지은",
+      "role": "UX Designer"
+    },
+    {
+      "id": "content-section-1",
+      "title": "사용자 중심 디자인",
+      "type": "content",
+      "duration": 45000,
+      "startTime": 5000,
+      "endTime": 50000,
+      "audioSegmentIndex": 0,
+      "sentences": [
+        {
+          "id": "sentence-1",
+          "text": "안녕하세요, 토스에서 UX 디자이너로 일하고 있는 이지은입니다.",
+          "startTime": 0,
+          "endTime": 4500
+        },
+        {
+          "id": "sentence-2",
+          "text": "오늘은 복잡한 금융 서비스를 누구나 쉽게 사용할 수 있도록 만드는 UX 디자인에 대해 이야기하려고 합니다.",
+          "startTime": 4500,
+          "endTime": 12000
+        },
+        {
+          "id": "sentence-3",
+          "text": "금융 서비스는 복잡한 정보와 절차를 포함하고 있습니다.",
+          "startTime": 12000,
+          "endTime": 16500
+        },
+        {
+          "id": "sentence-4",
+          "text": "하지만 사용자 중심의 디자인으로 이를 간단하게 만들 수 있습니다.",
+          "startTime": 16500,
+          "endTime": 24000
+        },
+        {
+          "id": "sentence-5",
+          "text": "핵심은 사용자가 원하는 것을 빠르게 찾을 수 있도록 하는 것입니다.",
+          "startTime": 24000,
+          "endTime": 31500
+        },
+        {
+          "id": "sentence-6",
+          "text": "불필요한 정보는 숨기고, 중요한 정보는 강조합니다.",
+          "startTime": 31500,
+          "endTime": 38000
+        },
+        {
+          "id": "sentence-7",
+          "text": "이를 통해 사용자 경험이 크게 개선되었습니다.",
+          "startTime": 38000,
+          "endTime": 45000
+        }
+      ]
+    },
+    {
+      "id": "content-section-2",
+      "title": "디자인 원칙",
+      "type": "content",
+      "duration": 40000,
+      "startTime": 50000,
+      "endTime": 90000,
+      "audioSegmentIndex": 1,
+      "sentences": [
+        {
+          "id": "sentence-8",
+          "text": "사용자 중심 디자인의 핵심 원칙에 대해 이야기해보겠습니다.",
+          "startTime": 0,
+          "endTime": 4500
+        },
+        {
+          "id": "sentence-9",
+          "text": "첫째, 명확성입니다. 사용자가 무엇을 해야 하는지 명확히 알 수 있어야 합니다.",
+          "startTime": 4500,
+          "endTime": 11500
+        },
+        {
+          "id": "sentence-10",
+          "text": "둘째, 일관성입니다. 전체 서비스에서 동일한 패턴을 사용합니다.",
+          "startTime": 11500,
+          "endTime": 18000
+        },
+        {
+          "id": "sentence-11",
+          "text": "셋째, 피드백입니다. 사용자의 행동에 즉시 반응해야 합니다.",
+          "startTime": 18000,
+          "endTime": 25500
+        },
+        {
+          "id": "sentence-12",
+          "text": "넷째, 오류 방지입니다. 사용자가 실수할 수 있는 상황을 미리 방지합니다.",
+          "startTime": 25500,
+          "endTime": 33000
+        },
+        {
+          "id": "sentence-13",
+          "text": "이러한 원칙을 적용하여 더 나은 사용자 경험을 만들어 나가겠습니다.",
+          "startTime": 33000,
+          "endTime": 40000
+        }
+      ]
+    },
+    {
+      "id": "closing-section",
+      "title": "마무리",
+      "type": "closing",
+      "duration": 5000,
+      "startTime": 90000,
+      "endTime": 95000,
+      "message": "감사합니다",
+      "credits": [
+        "발표자: 이지은 (UX Designer)",
+        "복잡한 금융 서비스를 간단하게",
+        "토스팀 전체의 지원에 감사드립니다"
+      ]
+    }
+  ]
+} 

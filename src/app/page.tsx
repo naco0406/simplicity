@@ -2,7 +2,7 @@
 
 import { ConferenceSection } from '@/components/home/ConferenceSection';
 import { Header } from '@/components/layout/Header';
-import { SIMPLICITY } from '@/data/conferences';
+import { sampleConferenceData } from '@/data/sampleConferenceData';
 import { usePageTransition } from '@/hooks/usePageTransition';
 import { FC, useEffect, useRef, useState } from 'react';
 
@@ -21,7 +21,7 @@ const HomePage: FC = () => {
       const returnData = sessionStorage.getItem('returnTransitionData');
       if (returnData) {
         const data = JSON.parse(returnData);
-        const conferenceIndex = SIMPLICITY.findIndex(conf => conf.id === data.conference.id);
+        const conferenceIndex = sampleConferenceData.findIndex(conf => conf.id === data.conference.id);
 
         const scrollEvent = new CustomEvent('scrollToCardInstantly', {
           detail: { index: conferenceIndex, conferenceId: data.conference.id }
@@ -54,7 +54,7 @@ const HomePage: FC = () => {
 
       <Header />
       <main className="flex-1 flex items-center" ref={conferenceGridRef}>
-        <ConferenceSection conferences={SIMPLICITY} />
+        <ConferenceSection conferences={sampleConferenceData} />
       </main>
       {/* <Footer /> */}
     </div>

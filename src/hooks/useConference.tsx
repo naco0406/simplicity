@@ -1,7 +1,7 @@
 'use client';
 
 import { ConferenceData } from '@/types/conference';
-import { createContext, useContext, ReactNode } from 'react';
+import { createContext, ReactNode, useContext } from 'react';
 
 interface ConferenceContextType {
     conference: ConferenceData;

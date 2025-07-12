@@ -1,15 +1,15 @@
 'use client';
 
+import { BackgroundImage } from '@/components/conference/BackgroundImage';
 import { GoBackButton } from '@/components/conference/navigation/GoBackButton';
-import { Loading } from '@/components/conference/screen/LoadingScreen';
 import { Error } from '@/components/conference/screen/ErrorScreen';
-import { SIMPLICITY } from '@/data/conferences';
+import { Loading } from '@/components/conference/screen/LoadingScreen';
+import { sampleConferenceData } from '@/data/sampleConferenceData';
 import { ConferenceProvider } from '@/hooks/useConference';
 import { usePageTransition } from '@/hooks/usePageTransition';
 import { ConferenceData } from '@/types/conference';
 import { useRouter } from 'next/navigation';
 import { FC, ReactNode, use, useEffect, useState } from 'react';
-import { BackgroundImage } from '@/components/conference/BackgroundImage';
 
 interface Props {
     children: ReactNode;
@@ -29,7 +29,7 @@ const ConferenceLayout: FC<Props> = ({ children, params }) => {
     const resolvedParams = use(params);
 
     useEffect(() => {
-        const foundConference = SIMPLICITY.find(conf => conf.id === resolvedParams.id);
+        const foundConference = sampleConferenceData.find(conf => conf.id === resolvedParams.id);
 
         if (foundConference) {
             setConference(foundConference);

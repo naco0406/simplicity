@@ -26,7 +26,7 @@ export const ConferencePlayer: FC<Props> = ({
     const [audioLoadError, setAudioLoadError] = useState<string | null>(null);
     const [retryCount, setRetryCount] = useState(0);
     const [isPreloading, setIsPreloading] = useState(true);
-    
+
 
     // === Unified Player Hook ===
     const {
@@ -50,7 +50,7 @@ export const ConferencePlayer: FC<Props> = ({
     const { setAudioElement, clearError } = useAudioStore();
 
     // === Audio Element Setup with Retry Logic ===
-    const setupAudioElement = useCallback(async (retryAttempt = 0) => {
+    const setupAudioElement = useCallback(async () => {
         const audioElement = audioRef.current;
         if (!audioElement || !playerData.srcUrl) {
             console.warn('Audio element or src URL not available');
@@ -81,10 +81,10 @@ export const ConferencePlayer: FC<Props> = ({
 
             // Wait for the audio to be ready
             return new Promise<boolean>((resolve) => {
-                let timeoutId: NodeJS.Timeout;
-
                 const cleanup = () => {
-                    clearTimeout(timeoutId);
+                    if (timeoutId) {
+                        clearTimeout(timeoutId);
+                    }
                     audioElement.removeEventListener('canplaythrough', onCanPlayThrough);
                     audioElement.removeEventListener('loadeddata', onLoadedData);
                     audioElement.removeEventListener('error', onError);
@@ -119,7 +119,7 @@ export const ConferencePlayer: FC<Props> = ({
                 audioElement.addEventListener('error', onError, { once: true });
 
                 // Set timeout for retry
-                timeoutId = setTimeout(() => {
+                const timeoutId = setTimeout(() => {
                     console.warn('Audio loading timeout');
                     cleanup();
                     resolve(false);
@@ -148,7 +148,7 @@ export const ConferencePlayer: FC<Props> = ({
             for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
                 if (!isMounted) break;
 
-                const success = await setupAudioElement(attempt);
+                const success = await setupAudioElement();
 
                 if (success) {
                     setRetryCount(0);
@@ -187,7 +187,7 @@ export const ConferencePlayer: FC<Props> = ({
         setAudioLoadError(null);
         setIsPreloading(true);
 
-        const success = await setupAudioElement(0);
+        const success = await setupAudioElement();
         if (!success) {
             setAudioLoadError('오디오 로드에 실패했습니다. 다시 시도해주세요.');
             setIsPreloading(false);
@@ -298,9 +298,11 @@ export const ConferencePlayer: FC<Props> = ({
                     <div className="text-center">
                         <div className="w-8 h-8 border-2 border-red-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                         <p className="text-gray-300">오디오를 준비하는 중...</p>
-                        {/* <p className="text-gray-500 text-sm mt-2">
-                            시도 {retryCount + 1}/{MAX_RETRIES}
-                        </p> */}
+                        {retryCount > 0 && (
+                            <p className="text-gray-500 text-sm mt-2">
+                                시도 {retryCount + 1}/{MAX_RETRIES}
+                            </p>
+                        )}
                     </div>
                 </motion.div>
             )}

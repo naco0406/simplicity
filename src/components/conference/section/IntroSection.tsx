@@ -14,10 +14,11 @@ interface Props {
 
 export const IntroSection: FC<Props> = ({
     data: conference,
-    section,
-    playerState
+    // section,
+    // playerState
 }) => {
-    const sectionTime = playerState.currentTime - section.startTime;
+    // 혹시 몰라서 일단 가지고 있는 정보
+    // const sectionTime = playerState.currentTime - section.startTime;
     // const progress = Math.min(100, Math.max(0, (sectionTime / section.duration) * 100));
 
     return (

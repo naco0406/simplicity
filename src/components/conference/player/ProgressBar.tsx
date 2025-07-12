@@ -16,11 +16,9 @@ interface Props {
 export const ProgressBar: FC<Props> = ({
     section,
     playerState,
-    sectionIndex,
-    totalSections
+    sectionIndex
 }) => {
     // === Overall Progress ===
-    const overallProgress = usePlayerStore(playerSelectors.overallProgress);
     const sectionProgress = usePlayerStore(playerSelectors.sectionProgress);
 
     // === Sentence Progress for Content Sections ===

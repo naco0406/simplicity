@@ -223,8 +223,8 @@ export const useAudioStore = create<AudioStore>()(
                         element.volume = state.volume;
                         element.muted = state.muted;
                         element.preload = 'auto';
-                    } catch (error) {
-                        console.warn('Error setting initial audio properties:', error);
+                    } catch {
+                        console.warn('Error setting initial audio properties');
                     }
 
                     // Set up loading timeout
@@ -248,7 +248,7 @@ export const useAudioStore = create<AudioStore>()(
 
             // === Playback Controls ===
             play: async () => {
-                const { audioElement, isReady, error, retryCount, isPlaying } = get();
+                const { audioElement, isReady, retryCount, isPlaying } = get();
 
                 if (!audioElement) {
                     throw new Error('Audio element not available');

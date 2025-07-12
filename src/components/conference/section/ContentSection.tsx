@@ -65,7 +65,7 @@ export const ContentSection: FC<Props> = ({
             const lines: string[] = [];
             let currentLine: string[] = [];
 
-            words.forEach((word, index) => {
+            words.forEach((word) => {
                 const testLine = currentLine.length === 0 ? word : currentLine.join(' ') + ' ' + word;
                 measureElement.textContent = testLine;
 

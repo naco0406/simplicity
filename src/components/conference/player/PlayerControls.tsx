@@ -24,7 +24,6 @@ interface Props {
 }
 
 export const PlayerControls: FC<Props> = ({
-    data,
     playerState,
     actions,
     isFirstSection,

@@ -34,8 +34,6 @@ export const ConferenceGrid: FC<Props> = memo(({ conferences }) => {
             const focusedConference = conferences[centerIndex];
             setFocusedConference(focusedConference);
             setFocusedIndex(centerIndex);
-            
-            console.log('현재 포커스된 컨퍼런스:', focusedConference);
         } else {
             setFocusedConference(null);
             setFocusedIndex(-1);

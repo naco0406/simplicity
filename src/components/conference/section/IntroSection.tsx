@@ -3,6 +3,7 @@
 import { ConferenceData } from '@/types/conference';
 import { PlayerState } from '@/types/conference-player';
 import { IntroSection as IntroSectionType } from '@/types/conference-section';
+import { generateAvatarGradient } from '@/utils/color-utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FC } from 'react';
 
@@ -63,7 +64,8 @@ export const IntroSection: FC<Props> = ({
                 >
                     <div className="flex items-center justify-center space-x-4 mb-4">
                         <motion.div
-                            className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg"
+                            className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg"
+                            style={generateAvatarGradient(conference.color)}
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ duration: 0.5, delay: 0.5, type: 'spring', stiffness: 200 }}
@@ -78,7 +80,10 @@ export const IntroSection: FC<Props> = ({
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.5, delay: 0.6 }}
                         >
-                            <h3 className="text-xl font-semibold text-blue-300 mb-1">
+                            <h3 
+                                className="text-xl font-semibold mb-1"
+                                style={{ color: conference.color }}
+                            >
                                 {conference.speaker}
                             </h3>
                             <p className="text-gray-400 text-sm">

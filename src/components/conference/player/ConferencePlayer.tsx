@@ -299,7 +299,7 @@ export const ConferencePlayer: FC<Props> = ({
                     exit={{ opacity: 0 }}
                 >
                     <div className="text-center">
-                        <div className="w-8 h-8 border-2 border-red-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                        <div className="w-8 h-8 border-2 border-white-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                         <p className="text-gray-300">오디오를 준비하는 중...</p>
                         {retryCount > 0 && (
                             <p className="text-gray-500 text-sm mt-2">
@@ -316,6 +316,7 @@ export const ConferencePlayer: FC<Props> = ({
                 playerState={playerState}
                 sectionIndex={playerState.currentSectionIndex}
                 totalSections={playerData.sections.length}
+                conferenceColor={data.color}
             />
 
             {/* Main Content */}
@@ -339,12 +340,14 @@ export const ConferencePlayer: FC<Props> = ({
                             section={currentSection}
                             playerState={playerState}
                             actions={playerActions}
+                            conferenceColor={data.color}
                         />
                     ) : isClosingSection(currentSection) ? (
                         <ClosingSection
                             section={currentSection}
                             playerState={playerState}
                             actions={playerActions}
+                            conferenceColor={data.color}
                         />
                     ) : (
                         <div className="flex-1 flex items-center justify-center">
@@ -364,6 +367,7 @@ export const ConferencePlayer: FC<Props> = ({
                 canPlay={controlsEnabled}
                 isAudioReady={audioFullyReady}
                 needsUserInteraction={needsUserInteraction}
+                conferenceColor={data.color}
             />
         </div>
     );

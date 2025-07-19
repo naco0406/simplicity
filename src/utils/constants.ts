@@ -24,3 +24,5 @@ export const SCROLL_CONSTANTS = {
 } as const;
 
 export const MAX_RETRIES = 3;
+
+export const DEFAULT_COLOR = '#ef4444';

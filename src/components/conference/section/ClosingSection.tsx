@@ -2,6 +2,7 @@
 
 import { PlayerActions, PlayerState } from '@/types/conference-player';
 import { ClosingSection as ClosingSectionType } from '@/types/conference-section';
+import { DEFAULT_COLOR } from '@/utils/constants';
 import { motion } from 'framer-motion';
 import { FC } from 'react';
 
@@ -9,11 +10,13 @@ interface Props {
     section: ClosingSectionType;
     playerState: PlayerState;
     actions: PlayerActions;
+    conferenceColor?: string;
 }
 
 export const ClosingSection: FC<Props> = ({
     section,
     playerState,
+    conferenceColor = DEFAULT_COLOR
 }) => {
     const sectionTime = playerState.currentTime - section.startTime;
     const progress = Math.min(100, Math.max(0, (sectionTime / section.duration) * 100));
@@ -66,13 +69,17 @@ export const ClosingSection: FC<Props> = ({
                 {/* Completion indicator */}
                 {progress >= 100 && (
                     <motion.div
-                        className="mt-8 text-green-400"
+                        className="mt-8"
+                        style={{ color: conferenceColor }}
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5 }}
                     >
                         <div className="flex items-center justify-center space-x-2">
-                            <div className="w-3 h-3 bg-green-400 rounded-full" />
+                            <div
+                                className="w-3 h-3 rounded-full"
+                                style={{ backgroundColor: conferenceColor }}
+                            />
                             <span className="text-sm font-medium">완료</span>
                         </div>
                     </motion.div>

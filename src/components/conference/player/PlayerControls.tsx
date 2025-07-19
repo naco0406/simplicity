@@ -1,6 +1,8 @@
 'use client';
 
 import { ConferencePlayerData, PlayerActions, PlayerState } from '@/types/conference-player';
+import { generateButtonGradient } from '@/utils/color-utils';
+import { DEFAULT_COLOR } from '@/utils/constants';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
     Loader2,
@@ -21,6 +23,7 @@ interface Props {
     canPlay: boolean;
     isAudioReady: boolean;
     needsUserInteraction?: boolean;
+    conferenceColor?: string;
 }
 
 export const PlayerControls: FC<Props> = ({
@@ -30,7 +33,8 @@ export const PlayerControls: FC<Props> = ({
     isLastSection,
     canPlay,
     isAudioReady,
-    needsUserInteraction = false
+    needsUserInteraction = false,
+    conferenceColor = DEFAULT_COLOR
 }) => {
     const [isActionLoading, setIsActionLoading] = useState(false);
     const [showAutoplayPrompt, setShowAutoplayPrompt] = useState(false);
@@ -83,7 +87,7 @@ export const PlayerControls: FC<Props> = ({
             transition={{ duration: 0.3 }}
         >
             <div className="flex items-center space-x-2">
-                <Volume2 className="w-4 h-4 text-red-400" />
+                <Volume2 className="w-4 h-4" style={{ color: conferenceColor }} />
                 <span className="text-sm">재생 버튼을 클릭하여 시작하세요</span>
             </div>
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
@@ -129,11 +133,12 @@ export const PlayerControls: FC<Props> = ({
                     className={`
                         relative p-4 rounded-full shadow-lg transition-all duration-200
                         ${isPlayable && !isActionLoading
-                            ? 'bg-red-500 hover:bg-red-600 text-white'
+                            ? 'text-white'
                             : 'bg-gray-600 text-gray-400 cursor-not-allowed'
                         }
                         ${showAutoplayPrompt ? 'animate-pulse' : ''}
                     `}
+                    style={isPlayable && !isActionLoading ? generateButtonGradient(conferenceColor) : {}}
                     whileHover={isPlayable && !isActionLoading ? { scale: 1.05 } : {}}
                     whileTap={isPlayable && !isActionLoading ? { scale: 0.95 } : {}}
                     aria-label={playerState.isPlaying ? "일시정지" : "재생"}

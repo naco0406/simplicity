@@ -3,6 +3,8 @@
 import { playerSelectors, usePlayerStore } from '@/stores/conference-player-store';
 import { PlayerState } from '@/types/conference-player';
 import { isContentSection, Section } from '@/types/conference-section';
+import { generateProgressBarColor } from '@/utils/color-utils';
+import { DEFAULT_COLOR } from '@/utils/constants';
 import { motion } from 'framer-motion';
 import { FC, useMemo } from 'react';
 
@@ -11,12 +13,14 @@ interface Props {
     playerState: PlayerState;
     sectionIndex: number;
     totalSections: number;
+    conferenceColor?: string;
 }
 
 export const ProgressBar: FC<Props> = ({
     section,
     playerState,
-    sectionIndex
+    sectionIndex,
+    conferenceColor = DEFAULT_COLOR
 }) => {
     // === Overall Progress ===
     const sectionProgress = usePlayerStore(playerSelectors.sectionProgress);
@@ -46,7 +50,7 @@ export const ProgressBar: FC<Props> = ({
         <div className="w-full space-y-3 px-6 pb-4">
             {/* Section Info */}
             <div className="flex items-center justify-between text-sm text-gray-400 mb-2">
-                <span className="text-red-400 font-medium">
+                <span className="text-white-400 font-medium">
                     {String(sectionIndex + 1).padStart(2, '0')}. {section.title}
                 </span>
                 {/* <span className="text-xs">
@@ -68,7 +72,8 @@ export const ProgressBar: FC<Props> = ({
             {!isContentSection(section) && (
                 <div className="w-full h-0.5 bg-gray-600 rounded-full overflow-hidden">
                     <motion.div
-                        className="h-full bg-gradient-to-r from-red-500 to-red-400 rounded-full"
+                        className="h-full rounded-full"
+                        style={generateProgressBarColor(conferenceColor)}
                         initial={{ width: 0 }}
                         animate={{ width: `${sectionProgress}%` }}
                         transition={{ duration: 0.2, ease: "easeOut" }}
@@ -86,12 +91,13 @@ export const ProgressBar: FC<Props> = ({
                         return (
                             <div
                                 key={sentence.id}
-                                className={`h-0.5 flex-1 rounded-full overflow-hidden ${isActive ? 'bg-red-200/30' : 'bg-gray-600/50'
-                                    }`}
+                                className={`h-0.5 flex-1 rounded-full overflow-hidden ${isActive ? 'bg-gray-600/50' : 'bg-gray-600/30'}`}
+                                style={isActive ? { backgroundColor: `${conferenceColor}20` } : {}}
                                 title={`문장 ${index + 1}: ${progress.toFixed(1)}%`}
                             >
                                 <motion.div
-                                    className="h-full bg-red-400 rounded-full"
+                                    className="h-full rounded-full"
+                                    style={generateProgressBarColor(conferenceColor)}
                                     initial={{ width: 0 }}
                                     animate={{ width: `${progress}%` }}
                                     transition={{ duration: 0.2, ease: "easeOut" }}

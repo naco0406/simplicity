@@ -117,7 +117,7 @@ export const PlayerControls: FC<Props> = ({
                 {/* Previous */}
                 <motion.button
                     onClick={handlePrevious}
-                    disabled={isFirstSection}
+                    disabled={isFirstSection || showAutoplayPrompt}
                     className="p-3 rounded-full hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                     whileHover={{ scale: isFirstSection ? 1 : 1.05 }}
                     whileTap={{ scale: isFirstSection ? 1 : 0.95 }}
@@ -181,7 +181,7 @@ export const PlayerControls: FC<Props> = ({
                 {/* Next */}
                 <motion.button
                     onClick={handleNext}
-                    disabled={isLastSection}
+                    disabled={isLastSection || showAutoplayPrompt}
                     className="p-3 rounded-full hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                     whileHover={{ scale: isLastSection ? 1 : 1.05 }}
                     whileTap={{ scale: isLastSection ? 1 : 0.95 }}

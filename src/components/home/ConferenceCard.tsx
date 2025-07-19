@@ -3,6 +3,7 @@
 import { usePageTransition } from '@/hooks/usePageTransition';
 import { ConferenceData } from '@/types/conference';
 import { CARD_CONSTANTS } from '@/utils/constants';
+import { generateGradientBorder, generateGlowEffect } from '@/utils/color-utils';
 import { useRouter } from 'next/navigation';
 import { FC, memo, useRef, useEffect } from 'react';
 
@@ -117,7 +118,7 @@ export const ConferenceCard: FC<Props> = memo(({
                     background: 'linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))',
                     backdropFilter: 'blur(4px)',
                     border: '1px solid rgba(255,255,255,0.2)',
-                    boxShadow: isFocused ? '0 0 20px rgba(96, 165, 250, 0.3)' : undefined
+                    boxShadow: isFocused ? generateGradientBorder(conference.color).boxShadow : undefined
                 }}
             >
                 {/* 포커스 상태 그라디언트 테두리 */}
@@ -125,7 +126,7 @@ export const ConferenceCard: FC<Props> = memo(({
                     <div
                         className="absolute inset-0 rounded-2xl pointer-events-none z-20"
                         style={{
-                            background: 'linear-gradient(135deg, #60a5fa, #a855f7)',
+                            ...generateGradientBorder(conference.color),
                             padding: '2px',
                             mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
                             maskComposite: 'exclude'
@@ -135,7 +136,10 @@ export const ConferenceCard: FC<Props> = memo(({
 
                 {/* 포커스 상태 글로우 효과 */}
                 {isFocused && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-purple-600/10 rounded-2xl animate-pulse" />
+                    <div 
+                        className="absolute inset-0 rounded-2xl animate-pulse"
+                        style={generateGlowEffect(conference.color)}
+                    />
                 )}
 
                 {/* 이미지 섹션 */}

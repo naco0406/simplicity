@@ -250,8 +250,11 @@ export const ConferencePlayer: FC<Props> = ({
     const controlsEnabled = canPlay && !isPreloading;
     const audioFullyReady = isAudioReady && !isPreloading;
 
+    const backgroundImageVisibleTime = playerData.sections.length > 0 && playerData.sections[0].type === 'intro' ? playerData.sections[0].duration : 0;
+    const shouldShowBackgroundImage = playerState.currentTime < backgroundImageVisibleTime + 500;
+
     return (
-        <div className={`w-full h-full flex flex-col bg-black text-white ${className}`}>
+        <div className={`w-full h-full flex flex-col ${shouldShowBackgroundImage ? '' : 'bg-black'} text-white ${className} transition-all duration-500`}>
             {/* Hidden Audio Element */}
             <audio
                 ref={audioRef}

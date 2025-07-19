@@ -76,10 +76,10 @@ const ConferenceLayout: FC<Props> = ({ children, params }) => {
     }
 
     return (
-        <div className="h-screen bg-black text-white relative overflow-hidden flex flex-col">
+        <div className="h-screen text-white relative overflow-hidden flex flex-col">
             <div className={`transition-all duration-500 ease-out ${fadeIn ? 'opacity-100' : 'opacity-0'} h-full flex flex-col`}>
-                <BackgroundImage conference={conference} />
-
+            <BackgroundImage conference={conference} />
+            
                 {/* Navigation */}
                 <nav className="relative z-20 p-6 flex-shrink-0">
                     <GoBackButton onClick={handleBackClick} />

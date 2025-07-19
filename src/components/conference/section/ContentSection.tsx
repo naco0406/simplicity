@@ -21,7 +21,7 @@ interface Props {
 export const ContentSection: FC<Props> = ({
     section,
     playerState,
-    actions,
+    // actions,
     conferenceColor = DEFAULT_COLOR
 }) => {
     const textRef = useRef<HTMLDivElement>(null);
@@ -52,7 +52,7 @@ export const ContentSection: FC<Props> = ({
 
             // 임시로 실제 텍스트 설정
             const originalContent = element.textContent;
-            const originalInnerHTML = element.innerHTML;
+            // const originalInnerHTML = element.innerHTML;
             element.textContent = text;
 
             // DOM 업데이트가 완료될 때까지 짧은 지연
@@ -90,7 +90,7 @@ export const ContentSection: FC<Props> = ({
                         const word = words[wordIndex];
 
                         // 현재 단어의 끝 위치 계산
-                        const wordStartPos = textPosition;
+                        // const wordStartPos = textPosition;
                         const wordEndPos = textPosition + word.length;
 
                         // 범위가 유효한지 확인
@@ -140,12 +140,14 @@ export const ContentSection: FC<Props> = ({
                     }
 
                 } catch (innerError) {
+                    console.error(innerError);
                     element.textContent = originalContent;
                     setTextLines([text]);
                 }
             }, 10);
 
         } catch (error) {
+            console.error(error);
             setTextLines([text]);
         }
     }, [currentSentence?.text]);
@@ -239,6 +241,7 @@ export const ContentSection: FC<Props> = ({
             setTextLines(lines.length > 0 ? lines : [text]);
 
         } catch (error) {
+            console.error(error);
             setTextLines([text]);
         }
     }, [currentSentence?.text]);
@@ -264,6 +267,7 @@ export const ContentSection: FC<Props> = ({
                 measureTextLinesWithRange();
                 return;
             } catch (error) {
+                console.error(error);
             }
         }
 
@@ -300,7 +304,7 @@ export const ContentSection: FC<Props> = ({
         const handleResize = () => {
             if (currentSentence) {
                 setTextLines([]);
-                const timer = setTimeout(() => {
+                setTimeout(() => {
                     measureTextLines();
                 }, 100);
             }

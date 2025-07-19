@@ -1,5 +1,6 @@
 import { useScrollNavigation } from '@/hooks/useScrollNavigation';
 import { useVerticalToHorizontalScroll } from '@/hooks/useVerticalToHorizontalScroll';
+import { useFocusedConferenceContext } from '@/contexts/FocusedConferenceContext';
 import { ConferenceData } from '@/types/conference';
 import { CARD_CONSTANTS, SCROLL_CONSTANTS } from '@/utils/constants';
 import { FC, memo, useRef, useEffect } from 'react';
@@ -23,6 +24,23 @@ export const ConferenceGrid: FC<Props> = memo(({ conferences }) => {
         itemsLength: conferences.length,
         disableAutoScroll: false,
     });
+
+    // Context API를 사용하여 포커스된 컨퍼런스 관리
+    const { setFocusedConference, setFocusedIndex } = useFocusedConferenceContext();
+
+    // centerIndex가 변경될 때마다 Context 업데이트
+    useEffect(() => {
+        if (conferences.length > 0 && centerIndex >= 0 && centerIndex < conferences.length) {
+            const focusedConference = conferences[centerIndex];
+            setFocusedConference(focusedConference);
+            setFocusedIndex(centerIndex);
+            
+            console.log('현재 포커스된 컨퍼런스:', focusedConference);
+        } else {
+            setFocusedConference(null);
+            setFocusedIndex(-1);
+        }
+    }, [centerIndex, conferences, setFocusedConference, setFocusedIndex]);
 
     // 상하 스크롤을 좌우 스크롤로 변환
     useVerticalToHorizontalScroll({

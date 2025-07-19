@@ -8,6 +8,7 @@ export interface ConferenceData {
     role: string;
     description: string;
     image: string;
+    color: string;
 }
 
 export interface Conference {

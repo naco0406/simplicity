@@ -26,3 +26,10 @@ export const SCROLL_CONSTANTS = {
 export const MAX_RETRIES = 3;
 
 export const DEFAULT_COLOR = '#ef4444';
+
+// 모바일용 터치 타겟 최소 크기 (44px는 Apple HIG 권장사항)
+export const TOUCH_TARGET = {
+  MIN_SIZE: 44,
+  COMFORTABLE_SIZE: 48,
+  LARGE_SIZE: 56,
+} as const;

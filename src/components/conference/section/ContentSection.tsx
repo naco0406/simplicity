@@ -4,6 +4,7 @@ import { PlayerState } from '@/types/conference-player';
 import { ContentSection as ContentSectionType } from '@/types/conference-section';
 import { generateComplexGradient } from '@/utils/color-utils';
 import { DEFAULT_COLOR } from '@/utils/constants';
+import { useIsMobile } from '@/utils/mobile-utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 
@@ -26,6 +27,7 @@ export const ContentSection: FC<Props> = ({
 }) => {
     const textRef = useRef<HTMLDivElement>(null);
     const [textLines, setTextLines] = useState<string[]>([]);
+    const isMobile = useIsMobile();
     const currentSentence = section.sentences[playerState.currentSentenceIndex];
 
     const measureTextLinesWithRange = useCallback(() => {
@@ -319,7 +321,7 @@ export const ContentSection: FC<Props> = ({
     if (!currentSentence) {
         return (
             <div className="flex-1 flex items-center justify-center">
-                <p className="text-gray-400 text-lg">
+                <p className={`text-gray-400 ${isMobile ? 'text-base' : 'text-lg'}`}>
                     섹션을 로딩 중... (문장 인덱스: {playerState.currentSentenceIndex}, 총 문장: {section.sentences.length})
                 </p>
             </div>
@@ -418,12 +420,18 @@ export const ContentSection: FC<Props> = ({
     };
 
     return (
-        <div className="flex-1 flex flex-col justify-center items-center px-8 py-12">
+        <div className={`flex-1 flex flex-col justify-center items-center ${
+            isMobile ? 'px-4 py-6' : 'px-8 py-12'
+        }`}>
             <div className="w-full max-w-4xl mx-auto">
                 <div className="text-left relative">
                     {/* 깜빡거림 방지를 위한 절대 위치 컨테이너 */}
                     <div
-                        className="relative min-h-[8rem] md:min-h-[12rem] lg:min-h-[16rem]"
+                        className={`relative ${
+                            isMobile 
+                                ? 'min-h-[6rem] sm:min-h-[8rem]' 
+                                : 'min-h-[8rem] md:min-h-[12rem] lg:min-h-[16rem]'
+                        }`}
                         style={{
                             opacity: transitionOpacity,
                             transition: 'opacity 0.1s ease-out'
@@ -441,7 +449,11 @@ export const ContentSection: FC<Props> = ({
                                 }}
                                 className="absolute inset-0 flex items-center"
                             >
-                                <div className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed w-full">
+                                <div className={`font-medium leading-relaxed w-full ${
+                                    isMobile 
+                                        ? 'text-xl sm:text-2xl' 
+                                        : 'text-2xl md:text-3xl lg:text-4xl'
+                                }`}>
                                     {textLines.length > 1 ? (
                                         <div ref={textRef}>
                                             {textLines.map((line, index) => (

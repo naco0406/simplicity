@@ -5,6 +5,7 @@ import { PlayerState } from '@/types/conference-player';
 import { isContentSection, Section } from '@/types/conference-section';
 import { generateProgressBarColor } from '@/utils/color-utils';
 import { DEFAULT_COLOR } from '@/utils/constants';
+import { useIsMobile } from '@/utils/mobile-utils';
 import { motion } from 'framer-motion';
 import { FC, useMemo } from 'react';
 
@@ -22,6 +23,8 @@ export const ProgressBar: FC<Props> = ({
     sectionIndex,
     conferenceColor = DEFAULT_COLOR
 }) => {
+    const isMobile = useIsMobile();
+    
     // === Overall Progress ===
     const sectionProgress = usePlayerStore(playerSelectors.sectionProgress);
 
@@ -47,10 +50,10 @@ export const ProgressBar: FC<Props> = ({
     }, [section, playerState.currentSectionIndex, playerState.currentSentenceIndex, playerState.currentTime, sectionIndex]);
 
     return (
-        <div className="w-full space-y-3 px-6 pb-4">
+        <div className={`w-full space-y-3 pb-4 ${isMobile ? 'px-4' : 'px-6'}`}>
             {/* Section Info */}
-            <div className="flex items-center justify-between text-sm text-gray-400 mb-2">
-                <span className="text-white-400 font-medium">
+            <div className="flex items-center justify-between mb-2">
+                <span className={`text-white-400 font-medium ${isMobile ? 'text-xs' : 'text-sm'} text-gray-400`}>
                     {String(sectionIndex + 1).padStart(2, '0')}. {section.title}
                 </span>
                 {/* <span className="text-xs">
@@ -70,7 +73,7 @@ export const ProgressBar: FC<Props> = ({
 
             {/* Current Section Progress */}
             {!isContentSection(section) && (
-                <div className="w-full h-0.5 bg-gray-600 rounded-full overflow-hidden">
+                <div className={`w-full bg-gray-600 rounded-full overflow-hidden ${isMobile ? 'h-0.5' : 'h-0.5'}`}>
                     <motion.div
                         className="h-full rounded-full"
                         style={generateProgressBarColor(conferenceColor)}
@@ -83,7 +86,7 @@ export const ProgressBar: FC<Props> = ({
 
             {/* Sentence Indicators for Content Sections */}
             {isContentSection(section) && playerState.currentSectionIndex === sectionIndex && (
-                <div className="flex items-center space-x-1 mt-2">
+                <div className={`flex items-center mt-2 ${isMobile ? 'space-x-0.5' : 'space-x-1'}`}>
                     {section.sentences.map((sentence, index) => {
                         const progress = sentenceProgresses[index] || 0;
                         const isActive = index === playerState.currentSentenceIndex;
@@ -91,7 +94,9 @@ export const ProgressBar: FC<Props> = ({
                         return (
                             <div
                                 key={sentence.id}
-                                className={`h-0.5 flex-1 rounded-full overflow-hidden ${isActive ? 'bg-gray-600/50' : 'bg-gray-600/30'}`}
+                                className={`flex-1 rounded-full overflow-hidden ${
+                                    isMobile ? 'h-0.5' : 'h-0.5'
+                                } ${isActive ? 'bg-gray-600/50' : 'bg-gray-600/30'}`}
                                 style={isActive ? { backgroundColor: `${conferenceColor}20` } : {}}
                                 title={`문장 ${index + 1}: ${progress.toFixed(1)}%`}
                             >

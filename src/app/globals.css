@@ -20,6 +20,52 @@ body {
     overflow-x: hidden;
 }
 
+/* Safe Area 지원 (iOS notch 등) */
+body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+}
+
+/* 모바일용 터치 개선 */
+@media (pointer: coarse) {
+    /* 터치 스크린에서 호버 효과 비활성화 */
+    .hover\:scale-105:hover {
+        transform: none !important;
+    }
+    
+    /* 터치 피드백 강화 */
+    button, a, [role="button"] {
+        -webkit-tap-highlight-color: rgba(59, 130, 246, 0.3);
+        tap-highlight-color: rgba(59, 130, 246, 0.3);
+    }
+}
+
+/* 모바일에서 스크롤 성능 최적화 */
+@media (max-width: 768px) {
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* 모바일에서 텍스트 선택 방지 (사용자 경험 향상) */
+    .select-none-mobile {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    /* 모바일에서 드래그 방지 */
+    img, video {
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+    }
+}
+
 /* 스크롤바 숨기기 */
 .scrollbar-hide {
     -ms-overflow-style: none;
@@ -150,6 +196,17 @@ body {
         font-size: 1.25rem;
         line-height: 1.75rem;
     }
+    
+    /* 모바일용 추가 텍스트 크기 */
+    .text-responsive-lg {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+    
+    .text-responsive-base {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
 }
 
 @media (min-width: 641px) {
@@ -157,12 +214,55 @@ body {
         font-size: 1.5rem;
         line-height: 2rem;
     }
+    
+    .text-responsive-lg {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+    
+    .text-responsive-base {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
 }
 
 @media (min-width: 1024px) {
     .text-responsive-xl {
         font-size: 1.875rem;
         line-height: 2.25rem;
+    }
+    
+    .text-responsive-lg {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+    
+    .text-responsive-base {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+}
+
+/* 모바일 최적화된 간격 */
+@media (max-width: 640px) {
+    .mobile-padding-sm {
+        padding: 0.75rem;
+    }
+    
+    .mobile-padding-md {
+        padding: 1rem;
+    }
+    
+    .mobile-padding-lg {
+        padding: 1.5rem;
+    }
+    
+    .mobile-margin-sm {
+        margin: 0.5rem;
+    }
+    
+    .mobile-margin-md {
+        margin: 0.75rem;
     }
 }
 
@@ -175,11 +275,20 @@ body {
     }
 }
 
-/* 포커스 스타일 */
+/* 포커스 스타일 - 모바일 고려 */
 button:focus-visible,
 a:focus-visible {
     outline: 2px solid #3b82f6;
     outline-offset: 2px;
+}
+
+/* 터치 디바이스에서 더 큰 포커스 링 */
+@media (pointer: coarse) {
+    button:focus-visible,
+    a:focus-visible {
+        outline-width: 3px;
+        outline-offset: 3px;
+    }
 }
 
 /* 선택 색상 */

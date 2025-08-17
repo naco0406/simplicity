@@ -4,6 +4,8 @@ import { useConferencePlayer } from '@/hooks/useConferencePlayer';
 import { useAudioStore, usePlayerStore } from '@/stores';
 import { Conference } from '@/types/conference';
 import { isClosingSection, isContentSection, isIntroSection } from '@/types/conference-section';
+import { MAX_RETRIES } from '@/utils/constants';
+import { useIsMobile } from '@/utils/mobile-utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { ClosingSection } from '../section/ClosingSection';
@@ -11,7 +13,6 @@ import { ContentSection } from '../section/ContentSection';
 import { IntroSection } from '../section/IntroSection';
 import { PlayerControls } from './PlayerControls';
 import { ProgressBar } from './ProgressBar';
-import { MAX_RETRIES } from '@/utils/constants';
 
 interface Props extends Conference {
     className?: string;
@@ -26,6 +27,7 @@ export const ConferencePlayer: FC<Props> = ({
     const [audioLoadError, setAudioLoadError] = useState<string | null>(null);
     const [retryCount, setRetryCount] = useState(0);
     const [isPreloading, setIsPreloading] = useState(true);
+    const isMobile = useIsMobile();
 
 
     // === Unified Player Hook ===
@@ -199,14 +201,14 @@ export const ConferencePlayer: FC<Props> = ({
         return (
             <div className={`w-full h-full flex items-center justify-center bg-black text-white ${className}`}>
                 <motion.div
-                    className="text-center"
+                    className={`text-center ${isMobile ? 'px-4' : ''}`}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3 }}
                 >
-                    <h2 className="text-xl font-semibold text-red-400 mb-2">오류</h2>
-                    <p className="text-gray-400">잘못된 섹션입니다. (섹션 {playerState.currentSectionIndex})</p>
-                    <p className="text-gray-500 text-sm mt-2">총 {playerData.sections.length}개 섹션 중</p>
+                    <h2 className={`font-semibold text-red-400 mb-2 ${isMobile ? 'text-lg' : 'text-xl'}`}>오류</h2>
+                    <p className={`text-gray-400 ${isMobile ? 'text-sm' : 'text-base'}`}>잘못된 섹션입니다. (섹션 {playerState.currentSectionIndex})</p>
+                    <p className={`text-gray-500 mt-2 ${isMobile ? 'text-xs' : 'text-sm'}`}>총 {playerData.sections.length}개 섹션 중</p>
                 </motion.div>
             </div>
         );
@@ -217,16 +219,19 @@ export const ConferencePlayer: FC<Props> = ({
         return (
             <div className={`w-full h-full flex items-center justify-center bg-black text-white ${className}`}>
                 <motion.div
-                    className="text-center max-w-md px-6"
+                    className={`text-center max-w-md ${isMobile ? 'px-4' : 'px-6'}`}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3 }}
                 >
-                    <h2 className="text-xl font-semibold text-red-400 mb-4">오디오 로드 실패</h2>
-                    <p className="text-gray-400 mb-6">{audioLoadError}</p>
+                    <h2 className={`font-semibold text-red-400 mb-4 ${isMobile ? 'text-lg' : 'text-xl'}`}>오디오 로드 실패</h2>
+                    <p className={`text-gray-400 mb-6 ${isMobile ? 'text-sm' : 'text-base'}`}>{audioLoadError}</p>
                     <button
                         onClick={handleRetryAudio}
-                        className="px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors duration-200"
+                        className={`bg-red-500 hover:bg-red-600 text-white rounded-lg 
+                            transition-colors duration-200 ${
+                                isMobile ? 'px-4 py-2 text-sm' : 'px-6 py-3'
+                        }`}
                     >
                         다시 시도
                     </button>
@@ -298,11 +303,13 @@ export const ConferencePlayer: FC<Props> = ({
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                 >
-                    <div className="text-center">
-                        <div className="w-8 h-8 border-2 border-white-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                        <p className="text-gray-300">오디오를 준비하는 중...</p>
+                    <div className={`text-center ${isMobile ? 'px-4' : ''}`}>
+                        <div className={`border-2 border-white-500 border-t-transparent rounded-full animate-spin mx-auto mb-4 ${
+                            isMobile ? 'w-6 h-6' : 'w-8 h-8'
+                        }`}></div>
+                        <p className={`text-gray-300 ${isMobile ? 'text-sm' : 'text-base'}`}>오디오를 준비하는 중...</p>
                         {retryCount > 0 && (
-                            <p className="text-gray-500 text-sm mt-2">
+                            <p className={`text-gray-500 mt-2 ${isMobile ? 'text-xs' : 'text-sm'}`}>
                                 시도 {retryCount + 1}/{MAX_RETRIES}
                             </p>
                         )}
@@ -351,7 +358,7 @@ export const ConferencePlayer: FC<Props> = ({
                         />
                     ) : (
                         <div className="flex-1 flex items-center justify-center">
-                            <p className="text-gray-400">알 수 없는 섹션 타입</p>
+                            <p className={`text-gray-400 ${isMobile ? 'text-sm' : 'text-base'}`}>알 수 없는 섹션 타입</p>
                         </div>
                     )}
                 </motion.div>

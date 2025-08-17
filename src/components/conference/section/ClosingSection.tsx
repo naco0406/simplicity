@@ -3,6 +3,7 @@
 import { PlayerActions, PlayerState } from '@/types/conference-player';
 import { ClosingSection as ClosingSectionType } from '@/types/conference-section';
 import { DEFAULT_COLOR } from '@/utils/constants';
+import { useIsMobile } from '@/utils/mobile-utils';
 import { motion } from 'framer-motion';
 import { FC } from 'react';
 
@@ -18,20 +19,27 @@ export const ClosingSection: FC<Props> = ({
     playerState,
     conferenceColor = DEFAULT_COLOR
 }) => {
+    const isMobile = useIsMobile();
     const sectionTime = playerState.currentTime - section.startTime;
     const progress = Math.min(100, Math.max(0, (sectionTime / section.duration) * 100));
 
     return (
-        <div className="flex-1 flex flex-col justify-center items-center px-8 py-12">
+        <div className={`flex-1 flex flex-col justify-center items-center ${
+            isMobile ? 'px-4 py-6' : 'px-8 py-12'
+        }`}>
             <div className="w-full max-w-4xl mx-auto text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: 'easeOut' }}
-                    className="mb-8"
+                    className={isMobile ? 'mb-6' : 'mb-8'}
                 >
                     <motion.h1
-                        className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight"
+                        className={`font-bold mb-6 leading-tight tracking-tight ${
+                            isMobile 
+                                ? 'text-2xl sm:text-3xl' 
+                                : 'text-4xl md:text-5xl lg:text-6xl'
+                        }`}
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
@@ -54,7 +62,7 @@ export const ClosingSection: FC<Props> = ({
                             {section.credits.map((credit, index) => (
                                 <motion.p
                                     key={index}
-                                    className="text-sm"
+                                    className={isMobile ? 'text-xs' : 'text-sm'}
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.3, delay: 0.7 + index * 0.1 }}
@@ -69,7 +77,7 @@ export const ClosingSection: FC<Props> = ({
                 {/* Completion indicator */}
                 {progress >= 100 && (
                     <motion.div
-                        className="mt-8"
+                        className={isMobile ? 'mt-6' : 'mt-8'}
                         style={{ color: conferenceColor }}
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -77,10 +85,10 @@ export const ClosingSection: FC<Props> = ({
                     >
                         <div className="flex items-center justify-center space-x-2">
                             <div
-                                className="w-3 h-3 rounded-full"
+                                className={`rounded-full ${isMobile ? 'w-2.5 h-2.5' : 'w-3 h-3'}`}
                                 style={{ backgroundColor: conferenceColor }}
                             />
-                            <span className="text-sm font-medium">완료</span>
+                            <span className={`font-medium ${isMobile ? 'text-xs' : 'text-sm'}`}>완료</span>
                         </div>
                     </motion.div>
                 )}

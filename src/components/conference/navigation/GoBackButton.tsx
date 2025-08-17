@@ -1,22 +1,68 @@
 import React, { FC, useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
+import { useIsMobile, useIsTouchDevice } from '@/utils/mobile-utils';
+import { TOUCH_TARGET } from '@/utils/constants';
 
 interface Props {
     onClick: () => void;
 }
 
 export const GoBackButton: FC<Props> = ({ onClick }) => {
-    const [isHovered, setIsHovered] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [isPressed, setIsPressed] = useState(false);
+    const isMobile = useIsMobile();
+    const isTouchDevice = useIsTouchDevice();
+
+    // 모바일에서는 터치로, 데스크톱에서는 호버로 제어
+    const handleInteractionStart = () => {
+        if (isTouchDevice) {
+            setIsExpanded(!isExpanded);
+            setIsPressed(true);
+        } else {
+            setIsExpanded(true);
+        }
+    };
+
+    const handleInteractionEnd = () => {
+        if (!isTouchDevice) {
+            setIsExpanded(false);
+        }
+        setIsPressed(false);
+    };
+
+    const handleClick = () => {
+        onClick();
+        // 클릭 후 상태 초기화
+        if (isTouchDevice) {
+            setIsExpanded(false);
+        }
+    };
+
+    // 모바일에 최적화된 크기
+    const buttonWidth = isExpanded ? (isMobile ? '120px' : '140px') : `${TOUCH_TARGET.COMFORTABLE_SIZE}px`;
+    const buttonHeight = `${TOUCH_TARGET.COMFORTABLE_SIZE}px`;
 
     return (
         <button
-            onClick={onClick}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="group relative flex items-center justify-center overflow-hidden bg-black/20 backdrop-blur-xl rounded-full border border-white/10 hover:bg-black/30 hover:border-white/20 transition-all duration-500 ease-out hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/10"
+            onClick={handleClick}
+            onMouseEnter={!isTouchDevice ? handleInteractionStart : undefined}
+            onMouseLeave={!isTouchDevice ? handleInteractionEnd : undefined}
+            onTouchStart={isTouchDevice ? handleInteractionStart : undefined}
+            onTouchEnd={isTouchDevice ? handleInteractionEnd : undefined}
+            className={`
+                group relative flex items-center justify-center overflow-hidden 
+                bg-black/20 backdrop-blur-xl rounded-full border border-white/10 
+                hover:bg-black/30 hover:border-white/20 
+                transition-all duration-500 ease-out hover:scale-105 
+                hover:shadow-2xl hover:shadow-blue-500/10
+                ${isPressed ? 'scale-95' : ''}
+                ${isMobile ? 'active:scale-95' : ''}
+            `}
             style={{
-                width: isHovered ? '140px' : '48px',
-                height: '48px',
+                width: buttonWidth,
+                height: buttonHeight,
+                minWidth: `${TOUCH_TARGET.MIN_SIZE}px`,
+                minHeight: `${TOUCH_TARGET.MIN_SIZE}px`,
                 transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
             }}
         >
@@ -29,19 +75,22 @@ export const GoBackButton: FC<Props> = ({ onClick }) => {
                 <ArrowLeft
                     className="w-6 h-6 text-white/90 group-hover:text-white transition-all duration-300 absolute"
                     style={{
-                        transform: isHovered ? 'translateX(-45px)' : 'translateX(0)',
+                        transform: isExpanded ? `translateX(${isMobile ? '-35px' : '-45px'})` : 'translateX(0)',
                         transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
                     }}
                 />
 
                 {/* 텍스트 */}
                 <span
-                    className="text-white/95 font-medium text-sm tracking-wide whitespace-nowrap absolute"
+                    className={`
+                        text-white/95 font-medium tracking-wide whitespace-nowrap absolute
+                        ${isMobile ? 'text-xs' : 'text-sm'}
+                    `}
                     style={{
-                        opacity: isHovered ? 1 : 0,
-                        transform: isHovered ? 'translateX(8px)' : 'translateX(-10px)',
+                        opacity: isExpanded ? 1 : 0,
+                        transform: isExpanded ? `translateX(${isMobile ? '6px' : '8px'})` : 'translateX(-10px)',
                         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                        transitionDelay: isHovered ? '0.1s' : '0s'
+                        transitionDelay: isExpanded ? '0.1s' : '0s'
                     }}
                 >
                     세션 나가기
